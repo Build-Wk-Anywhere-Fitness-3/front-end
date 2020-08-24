@@ -3,7 +3,15 @@ React I &amp; II
 
 ## GitHup Link: https://github.com/Build-Wk-Anywhere-Fitness-3/front-end.git
 
-
+## Dependencies:
+- [x] Download dependencies
+  - create-react-app
+    - axios
+    - yup
+    - styled components
+    - reactstrap bootstrap
+    
+    - cypress (install later once you build more)
 
 ## RUBRIK:
 
