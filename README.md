@@ -3,6 +3,37 @@ React I &amp; II
 
 ## GitHup Link: https://github.com/Build-Wk-Anywhere-Fitness-3/front-end.git
 
+## PVD - Canvas: https://docs.google.com/document/d/1S75RVA0gtwIg3GzKEuS1WKFXwXxHJtJkHAoRq0eiUz8/edit
+
+## IMPORTANT DOCUMENTS:pushpin:
+:github: GitHub Org:
+trello Trello Board:
+:reading_book: Product Canvas: https://docs.google.com/document/d/1DOECE2VCryomI2ow_ZinAeldfwFfw92lnEA8sU6TcuE/edit?usp=sharing --sample
+--Buildweek 101--
+:gear: Read the Culture Document:
+https://www.notion.so/web25tl/Build-Week-1-3379248ee7ed40a3a0cc26f36b1225e6
+bust_in_silhouette Role Descriptions
+https://www.notion.so/0200d2f8b46345c48c1418fa1c33652c?v=995e7fc27b73425bbe0f8741a6ba2c15
+:git: Git Workflow
+https://www.notion.so/Git-Workflow-34f9b468dcf74a669aff0d3797870d37
+100 Rubrics
+https://www.notion.so/Unit-Completion-Rubrics-c0783f6d9b7e435f9ce47e8cd2d0ee3b
+:focus-timer: Daily Milestones -
+https://www.notion.so/6e719d512134435f8a89ca2862f8d3e7?v=6c8d3bd7bbcb44539f8659fc96caa906
+:shark:Shark Tank Demo Guidelines
+https://www.notion.so/lambdaschool/Shark-Tank-Presentation-Agenda-for-Demos-For-Students-aafaadbe9e1448f8bbcce8afae11cf7b
+Help Channel
+
+bw_help_java
+bw_help_ux
+bw_help_ds
+bw_help_ios
+
+
+
+
+### FE1 ###
+
 ## Dependencies:
 - [x] Download dependencies
   - create-react-app
