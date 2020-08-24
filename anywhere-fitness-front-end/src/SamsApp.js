@@ -9,7 +9,7 @@ function App() {
     <Router>
       {" "}
       <div className="App"></div>
-      <ClientPrivateRoute path="/protected" />
+      <ClientPrivateRoute exact path="/protected" />
       <ClassForm />
     </Router>
   );
