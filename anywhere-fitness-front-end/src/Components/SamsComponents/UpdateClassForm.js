@@ -1,31 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
-import { useHistory } from "react-router-dom";
 
-export default function AddClassForm(props) {
+export default function UpdateClassForm(props) {
+  const { id } = useParams();
   const history = useHistory();
 
+  //   useEffect(() => {
+  //       axiosWithAuth().get(`/${id}`)
+  //   }, [id])
+
+  const updateClass = (e) => {
+    e.preventDefault();
+    axiosWithAuth()
+      .put("/api/auth/instructor/classes/:id", props.inputs)
+      .then((res) => {
+        console.log(res);
+      });
+  };
   const handleChange = (e) => {
     props.setInputs({ ...props.inputs, [e.target.name]: e.target.value });
   };
-
-  const postNewClass = (e) => {
-    e.preventDefault();
-    axiosWithAuth()
-      .post("/api/auth/instructor/classes", props.inputs)
-      .then((res) => {
-        console.log(res);
-        history.push("/");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   return (
     <div>
-      Add a new class:
-      <form onSubmit={postNewClass}>
+      Edit a class:
+      <form onSubmit={updateClass}>
         <label>
           Name of Class:
           <input
