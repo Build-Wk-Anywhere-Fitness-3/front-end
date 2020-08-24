@@ -22,7 +22,7 @@ export default function AddClassForm() {
   const postNewClass = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .post("", inputs)
+      .post("/api/auth/instructor/classes", inputs)
       .then((res) => {
         console.log(res);
       })
@@ -34,7 +34,7 @@ export default function AddClassForm() {
   const updateClass = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .put("", inputs)
+      .put("/api/auth/instructor/classes/:id", inputs)
       .then((res) => {
         console.log(res);
       });

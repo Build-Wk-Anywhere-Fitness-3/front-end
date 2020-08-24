@@ -35,7 +35,7 @@ export default function ClassList() {
 
   const getClassList = () => {
     axiosWithAuth()
-      .get("")
+      .get("/api/auth/users/classes")
       .then((res) => {
         console.log(res);
         //   setClientClassList(res.data)
@@ -45,9 +45,9 @@ export default function ClassList() {
       });
   };
 
-  useEffect(() => {
-    getClassList();
-  }, []);
+  // useEffect(() => {
+  //   getClassList();
+  // }, []);
   return (
     <ClassContext.Provider value={clientClassList}>
       <ClassListStyle className="classList">
