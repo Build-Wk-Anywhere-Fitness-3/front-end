@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 const initialValues = {
   name: "",
+  instructor: "",
   type: "",
   startTime: "",
   duration: "",
@@ -10,7 +11,8 @@ const initialValues = {
   current: "",
   maximum: "",
 };
-export default function ClassForm() {
+
+export default function AddClassForm() {
   const [inputs, setInputs] = useState(initialValues);
 
   const handleChange = (e) => {
@@ -20,7 +22,7 @@ export default function ClassForm() {
   const postNewClass = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .post("", inputs)
+      .post("/api/auth/instructor/classes", inputs)
       .then((res) => {
         console.log(res);
       })
@@ -32,12 +34,15 @@ export default function ClassForm() {
   const updateClass = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .put("", inputs)
-      .then((res) => {});
+      .put("/api/auth/instructor/classes/:id", inputs)
+      .then((res) => {
+        console.log(res);
+      });
   };
 
   return (
     <div>
+      Add a new class:
       <form onSubmit={postNewClass}>
         <label>
           Name of Class:
@@ -82,10 +87,10 @@ export default function ClassForm() {
         <label>
           Intensity:
           <select name="intensity" value={inputs.intensity}>
-            <option value="beginner">Beginner</option>
-            <option value="moderate">Moderate</option>
-            <option value="challenging">Challenging</option>
-            <option value="extreme">Extreme</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Challenging">Challenging</option>
+            <option value="Extreme">Extreme</option>
           </select>
         </label>
         <br />
