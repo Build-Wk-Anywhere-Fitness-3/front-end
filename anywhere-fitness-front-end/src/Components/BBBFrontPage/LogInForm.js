@@ -6,9 +6,8 @@ import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   const base = {
-    email: "",
+    username: "",
     password: "",
-    remember: "",
   };
 
   // STATE:
@@ -20,9 +19,8 @@ const LoginForm = () => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
   //errors
   const [errors, setErrors] = useState({
-    email: "",
+    username: "",
     password: "",
-    remember: false,
   });
 
   const [visState, setVisState] = useState("hidden");
@@ -57,26 +55,21 @@ const LoginForm = () => {
 
   //SCHEMA
   const signUpSchema = yup.object().shape({
-    email: yup
+    username: yup
       .string()
-      .email("Must be a valid email address.")
-      .required("Must include an email address."),
+      .required("Must include a valid username."),
     password: yup
       .string()
       .min(6, "Must be a minimum of 6 characters.")
       .max(10, "Must be a maximum of 10 characters.")
       .required("Must include a password."),
-    // type: ...none?...
-    remember: yup
-      .boolean()
-      .oneOf([true], "You must accept Terms and Conditions"),
   });
 
   //SUBMIT
   const formSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://reqres.in/api/users", formState)
+      .post("https://anytime-fitness.herokuapp.com/api/auth/login", formState)
       .then((res) => {
         setPost(res.data);
         data.push(post);
@@ -90,7 +83,7 @@ const LoginForm = () => {
   //Disable button if invalid inputs
 
   useEffect(() => {
-    if (formState.email.length > 3 && formState.password.length > 3) {
+    if (formState.username.length > 3 && formState.password.length > 3) {
       setButtonDisabled(false);
     } else {
       setButtonDisabled(true);
@@ -103,17 +96,17 @@ const LoginForm = () => {
       <form onSubmit={formSubmit}>
         <h2 className="sign-up">Login:</h2>
 
-        <label htmlFor="email" className="label">
-          Email:&#160;
+        <label htmlFor="username" className="label">
+          Username:&#160;
           <input
-            type="email"
-            name="email"
+            type="username"
+            name="username"
             placeholder="Noel.DaCosta@gmail.com"
-            value={formState.email}
+            value={formState.username}
             onChange={inputChange}
-            data-cy="email"
+            data-cy="username"
           />
-          {errors.email.length > 0 ? <p>{errors.email}</p> : null}
+          {errors.username.length > 0 ? <p>{errors.username}</p> : null}
         </label>
 
         <label htmlFor="password" className="label">
@@ -128,29 +121,6 @@ const LoginForm = () => {
           />
           {errors.password.length > 0 ? <p>{errors.password}</p> : null}
         </label>
-
-        <div className="termsContainer">
-          <label htmlFor="type" className="label" id="typeLabel">
-            Type:&#160;
-            <select name="type" data-cy="type">
-              <option value="Trainee">Trainee</option>
-              <option value="Instructor">Instructor</option>
-            </select>
-          </label>
-
-          <label htmlFor="remember" className="checkboxLabel">
-            <span>Remember:&#160;</span>
-            <input
-              className="checkboxInput"
-              type="checkbox"
-              name="remember"
-              checked={formState.remember}
-              value={formState.remember}
-              onChange={inputChange}
-              data-cy="remember"
-            />
-          </label>
-        </div>
 
         <div className="button">
           <Button

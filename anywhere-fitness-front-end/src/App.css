@@ -100,11 +100,10 @@ input {
   float: left;
   padding: 5% 15% 0% 0%;
   white-space: nowrap;
+}
 
-  span {
-    vertical-align: middle;
-  }
-  
+span {
+  vertical-align: middle;
 }
 
 .checkboxInput {

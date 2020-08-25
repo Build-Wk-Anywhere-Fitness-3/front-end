@@ -2,7 +2,6 @@ import React from "react";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 export default function ClassCard({ cls }) {
-  const fetchClass = () => {};
   return (
     <div>
       <h1>Name: {cls.name}</h1>
