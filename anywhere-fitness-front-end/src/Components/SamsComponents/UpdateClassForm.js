@@ -13,7 +13,7 @@ export default function UpdateClassForm(props) {
   const updateClass = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .put("/api/auth/instructor/classes/:id", props.inputs)
+      .put(`/api/auth/instructor/classes/${id}`, props.inputs)
       .then((res) => {
         console.log(res);
       });

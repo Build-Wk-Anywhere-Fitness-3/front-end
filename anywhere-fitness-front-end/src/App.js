@@ -12,6 +12,7 @@ import Footer from "./Components/AAAReusable/Footer";
 
 import ClientClassList from "./Components/SamsComponents/ClientClassList";
 import InstructorClassList from "./Components/SamsComponents/InstructorClassList";
+import PrivateRoute from "./Components/SamsComponents/PrivateRoute";
 
 function App() {
   return (
@@ -27,10 +28,10 @@ function App() {
           <Route exact path="/login" component={LoginForm} />
 
           <Logo />
+          <PrivateRoute path="/instructor" component={InstructorClassList} />
+          <PrivateRoute path="/users" component={ClientClassList} />
 
           <Footer />
-          <ClientClassList />
-          <InstructorClassList />
         </div>
         <Footer />
       </Router>
