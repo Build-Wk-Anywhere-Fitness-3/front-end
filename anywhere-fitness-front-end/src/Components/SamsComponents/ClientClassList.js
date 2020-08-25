@@ -18,7 +18,7 @@ const dummyData = [
     maximum: "N/A",
   },
   {
-    name: "Cycling intervals",
+    name: "Cycling Intervals",
     type: "Cycling",
     instructor: "Sam",
     startTime: "2:30pm",

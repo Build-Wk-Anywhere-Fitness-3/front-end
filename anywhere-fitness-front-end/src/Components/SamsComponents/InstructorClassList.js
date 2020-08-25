@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import AddClassForm from "./AddClassForm";
-
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import { useHistory, Route } from "react-router-dom";
 import { ClassListStyle } from "../../styled-components/";
+
+import AddClassForm from "./AddClassForm";
+import UpdateClassForm from "./UpdateClassForm";
 
 const dummyData = [
   {
@@ -16,7 +19,7 @@ const dummyData = [
     maximum: "N/A",
   },
   {
-    name: "Cycling intervals",
+    name: "Cycling Intervals",
     type: "Cycling",
     instructor: "Sam",
     startTime: "2:30pm",
@@ -28,8 +31,24 @@ const dummyData = [
   },
 ];
 
+const initialValues = {
+  name: "",
+  instructor: "",
+  type: "",
+  startTime: "",
+  duration: "",
+  intensity: "",
+  location: "",
+  current: "",
+  maximum: "",
+};
+
 export default function InstructorClassList() {
   const [instructorClasses, setInstructorClasses] = useState(dummyData);
+  const [inputs, setInputs] = useState(initialValues);
+
+  const history = useHistory();
+
   return (
     <>
       Your current classes:
@@ -45,11 +64,21 @@ export default function InstructorClassList() {
               <p>Location: {cls.location}</p>
               <p>Current number of registered attendees: {cls.current}</p>
               <p>Maximum class size: {cls.maximum}</p>
+              <button>Edit Class</button>
+              <button>Delete Class</button>
             </div>
           );
         })}
       </ClassListStyle>
-      <AddClassForm />
+      <button onClick={() => history.push("/add-class")}>
+        Make a new class
+      </button>
+      <Route path="/add-class">
+        <AddClassForm inputs={inputs} setInputs={setInputs} />
+      </Route>
+      <Route path="/update-class/:id">
+        <UpdateClassForm inputs={inputs} setInputs={setInputs} />
+      </Route>
     </>
   );
 }
