@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import ClientPrivateRoute from "./Components/Sam's Components/ClientPrivateRoute";
-import ClassForm from "./Components/Sam's Components/ClassForm";
+import ClientPrivateRoute from "./Components/SamsComponents/ClientPrivateRoute";
+import ClassForm from "./Components/SamsComponents/AddClassForm";
 
 function App() {
   return (
