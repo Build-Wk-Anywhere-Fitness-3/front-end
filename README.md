@@ -48,8 +48,8 @@ bw_help_ios
 
 
 1. ///OVERVIEW/WIREFRAME///:
-  - [] Plan to discuss plans for UI with rest of team
-  - [] For now use this as rough example to create forms and endpoints: https://www.youtube.com/watch?v=MK3A5SyEYYI
+  - [x] Plan to discuss plans for UI with rest of team
+  - [x] For now use this as rough example to create forms and endpoints: https://www.youtube.com/watch?v=MK3A5SyEYYI
 
 
 2. ///RUBRIK/REQUIREMENTS///:
