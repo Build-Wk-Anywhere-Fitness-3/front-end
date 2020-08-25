@@ -1,15 +1,15 @@
 import React from "react";
 import "./App.css";
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Header from "./Components/AAAReusable/Header";
 import Logo from "./Components/BBBFrontPage/Logo";
-import SignInForm from "./Components/BBBFrontPage/SignInForm";
+import SignUpForm from "./Components/BBBFrontPage/SignUpForm";
+import Overview from "./Components/BBBFrontPage/Overview";
+import LoginForm from "./Components/BBBFrontPage/LogInForm";
 import Footer from "./Components/AAAReusable/Footer";
 
-import ClientDash from "./Components/CCCSecondaryPages/Dashboard/ClientDash";
-import InstructorDash from "./Components/CCCSecondaryPages/Dashboard/InstructorDash";
 import ClientClassList from "./Components/SamsComponents/ClientClassList";
 import InstructorClassList from "./Components/SamsComponents/InstructorClassList";
 
@@ -19,15 +19,14 @@ function App() {
       <Router>
         <Header />
         <div className="App">
-          <Route
-            exact
-            path="/"
-            components={{ logo: Logo, signInForm: SignInForm }}
-          />
-          <Route path="client-dash" component={ClientDash} />
-          <Route path="instructor-dash" component={InstructorDash} />
+          <Route exact path="/">
+            <Logo />
+            <SignUpForm />
+          </Route>
+          <Route exact path="/login" component={LoginForm} />
+
           <Logo />
-          <SignInForm />
+
           <Footer />
           <ClientClassList />
           <InstructorClassList />
