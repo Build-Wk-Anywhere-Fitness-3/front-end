@@ -12,7 +12,17 @@
 
 .navLink {
   font-size: 1rem;
+  margin-top: 3px;
 }
+
+.dropdown {
+  width: 100%;
+  /* padding: 0px 70%; */
+  display: flex;
+  justify-content: flex-end;
+}
+
+
 
 .logo {
   height: 20%;
@@ -29,18 +39,22 @@ form {
   padding: 1rem;
   border-radius: 10px;
   border: 2px rgb(235, 234, 190) solid;
-  width: 90%;
+  width: 100%;
+  /* max-height: 40%vw; */
+
 }
 
-label {
+.label {
   padding: .5rem;
-  font-size: calc(5px + 2vmin);
+  font-size: calc(3px + 2vmin);
   width: 100%;
 }
 
 input {
   text-align: center;
   width: 100%;
+  outline: none;
+  border-style: hidden;
 }
 
 .visible {
@@ -50,3 +64,110 @@ input {
 .hidden {
   visibility: hidden;
 }
+
+
+.footer {
+  font-size: calc(1px + 2vmin);
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#typeLabel {
+  padding-top: 5%;
+  /* background-color: red; */
+}
+
+/* Checkbox */
+.termsContainer {
+  /* padding: .5rem; */
+  font-size: calc(3px + 2vmin);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  /* background-color: yellow; */
+}
+
+.checkboxLabel {
+
+  /* padding: 0px 50px; */
+  /* background-color: lightblue; */
+  /* vertical-align: middle; */
+  display: block;
+  float: left;
+  padding: 5% 15% 0% 0%;
+  white-space: nowrap;
+
+  span {
+    vertical-align: middle;
+  }
+  
+}
+
+.checkboxInput {
+  vertical-align: middle;
+  padding: 10px;
+  border: 3px solid red;
+  background-color: green;
+
+
+  /* width: 15px;
+  height: 15px;
+  padding: 50px;
+  margin: 0;
+  vertical-align: bottom;
+  position: relative;
+  top: -1px;
+  background-color: blue; */
+}
+
+/* input[type=checkbox], input[type=radio] {
+  vertical-align: middle;
+  position: relative;
+  bottom: 1px;
+}
+input[type=radio] {
+  bottom: 2px;
+} */
+
+
+.button {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+
+.overviewContainer {
+  width: 100%;
+  max-height: 600px;
+  align-items: center;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.overview {
+  max-width: 80%;
+  min-width: 50%;
+
+  /* min-height: 2rem;
+  max-height: 60rem; */
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #E6B31E;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 2px rgb(235, 234, 190) solid;
+}
+

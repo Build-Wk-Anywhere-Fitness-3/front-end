@@ -4,14 +4,11 @@ import * as yup from "yup";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
 
-const SignUpForm = () => {
+const LoginForm = () => {
   const base = {
-    firstName: "",
-    lastName: "",
     email: "",
     password: "",
-    type: "",
-    terms: "",
+    remember: "",
   };
 
   // STATE:
@@ -23,12 +20,9 @@ const SignUpForm = () => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
   //errors
   const [errors, setErrors] = useState({
-    firstName: "",
-    lastName: "",
     email: "",
     password: "",
-    type: "",
-    terms: false,
+    remember: false,
   });
 
   const [visState, setVisState] = useState("hidden");
@@ -63,20 +57,6 @@ const SignUpForm = () => {
 
   //SCHEMA
   const signUpSchema = yup.object().shape({
-    firstName: yup
-      .string()
-      .test(
-        "length",
-        "First Name must be more than 2 characters",
-        (val) => val.length > 2
-      ),
-    lastName: yup
-      .string()
-      .test(
-        "length",
-        "Last Name must be more than 2 characters",
-        (val) => val.length > 2
-      ),
     email: yup
       .string()
       .email("Must be a valid email address.")
@@ -87,7 +67,9 @@ const SignUpForm = () => {
       .max(10, "Must be a maximum of 10 characters.")
       .required("Must include a password."),
     // type: ...none?...
-    terms: yup.boolean().oneOf([true], "You must accept Terms and Conditions"),
+    remember: yup
+      .boolean()
+      .oneOf([true], "You must accept Terms and Conditions"),
   });
 
   //SUBMIT
@@ -105,77 +87,21 @@ const SignUpForm = () => {
       });
   };
 
-  // Disable button if invalid inputs
-  // useEffect(() => {
-  //   if ((formState.firstName.length < 3) && (formState.lastName.length < 3) && (formState.email.length < 3) && (formState.terms === false)) {
-  //     setButtonDisabled(true);
-  //   } else {
-  //     setButtonDisabled(false);
-  //   }
-  // }, [formState]);
+  //Disable button if invalid inputs
 
   useEffect(() => {
-    if (formState.firstName.length > 2) {
+    if (formState.email.length > 3 && formState.password.length > 3) {
       setButtonDisabled(false);
     } else {
       setButtonDisabled(true);
     }
   }, [formState]);
 
-  useEffect(() => {
-    if (formState.lastName.length > 2) {
-      setButtonDisabled(false);
-    } else {
-      setButtonDisabled(true);
-    }
-  }, [formState]);
-
-  useEffect(() => {
-    if (formState.email.length > 2) {
-      setButtonDisabled(false);
-    } else {
-      setButtonDisabled(true);
-    }
-  }, [formState]);
-
-  useEffect(() => {
-    if (formState.terms) {
-      setButtonDisabled(!true);
-    } else {
-      setButtonDisabled(!false);
-    }
-  }, [formState]);
 
   return (
     <div>
       <form onSubmit={formSubmit}>
-        <h2 className="sign-up">Sign-Up Today!</h2>
-
-        <label htmlFor="firstName" className="label">
-          First Name:&#160;
-          <input
-            type="text"
-            name="firstName"
-            placeholder="Noel"
-            value={formState.firstName}
-            onChange={inputChange}
-            data-cy="firstName"
-          />
-          {errors.firstName.length > 0 ? <p>{errors.firstName}</p> : null}
-        </label>
-
-        <label htmlFor="lastName" className="label">
-          Last Name:&#160;
-          <input
-            type="text"
-            name="lastName"
-            placeholder="DaCosta"
-            value={formState.lastName}
-            onChange={inputChange}
-            data-cy="lastName"
-          />
-          {errors.lastName.length > 0 ? <p>{errors.lastName}</p> : null}
-        </label>
+        <h2 className="sign-up">Login:</h2>
 
         <label htmlFor="email" className="label">
           Email:&#160;
@@ -212,16 +138,16 @@ const SignUpForm = () => {
             </select>
           </label>
 
-          <label htmlFor="terms" className="checkboxLabel">
-            <span>Terms:&#160;</span>
+          <label htmlFor="remember" className="checkboxLabel">
+            <span>Remember:&#160;</span>
             <input
               className="checkboxInput"
               type="checkbox"
-              name="terms"
-              checked={formState.terms}
-              value={formState.terms}
+              name="remember"
+              checked={formState.remember}
+              value={formState.remember}
               onChange={inputChange}
-              data-cy="terms"
+              data-cy="remember"
             />
           </label>
         </div>
@@ -239,16 +165,17 @@ const SignUpForm = () => {
             Submit
           </Button>
         </div>
-        <Link to="/login">
-          <p>Login</p>
+
+        <Link to="/">
+          <p>SignUp</p>
         </Link>
       </form>
       <h2 className={visState}>
         {" "}
-        Congratulations! You signed up! {JSON.stringify(post, null, 2)}
+        Logging in... {JSON.stringify(post, null, 2)}
       </h2>
     </div>
   );
 };
 
-export default SignUpForm;
+export default LoginForm;
