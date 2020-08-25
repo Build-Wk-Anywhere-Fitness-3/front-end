@@ -18,7 +18,6 @@ function App() {
     <div>
       <Router>
         <Header />
-
         <div className="App">
           <Route exact path="/">
             <Logo />
