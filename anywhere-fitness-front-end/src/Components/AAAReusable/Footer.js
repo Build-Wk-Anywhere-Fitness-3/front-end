@@ -6,10 +6,7 @@ import { Link } from "react-router-dom";
 function Footer (props) {
   return (
     <div>
-      <h1>Welcome</h1>
-        <Button color="danger" size="lg" type="submit">
-          Sign-In
-        </Button>
+      <p className="footer">Anywhere Fitness all rights reserved. </p>
     </div>
   );
 };
