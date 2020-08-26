@@ -38,16 +38,16 @@ export default function ClassList() {
       .get("/api/auth/users/classes")
       .then((res) => {
         console.log(res);
-        //   setClientClassList(res.data)
+        setClientClassList(res.data.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  // useEffect(() => {
-  //   getClassList();
-  // }, []);
+  useEffect(() => {
+    getClassList();
+  }, []);
   return (
     <ClassContext.Provider value={clientClassList}>
       <ClassListStyle className="classList">
@@ -57,7 +57,7 @@ export default function ClassList() {
               <h1>Name: {cls.name}</h1>
               <h3>Type of class: {cls.type}</h3>
               <h3>Instructor: {cls.instructor_name}</h3>
-              <p>Start Time: {cls.date}</p>
+              <p>Date: {cls.date}</p>
               <p>Intensity: {cls.intensity}</p>
               <p>Location: {cls.location}</p>
               <p>Current number of registered attendees: {cls.signedUp}</p>

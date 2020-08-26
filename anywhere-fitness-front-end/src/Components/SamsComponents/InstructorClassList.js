@@ -55,14 +55,14 @@ export default function InstructorClassList() {
 
   const getInstructorClasses = () => {
     axiosWithAuth()
-      .get("/api/auth/instructor/classes")
+      .get("/api/auth/instructor/classes/")
       .then((res) => {
         console.log(res);
       });
   };
-  //   useEffect(() => {
-  //     getInstructorClasses();
-  //   }, []);
+  useEffect(() => {
+    getInstructorClasses();
+  }, []);
 
   return (
     <>
