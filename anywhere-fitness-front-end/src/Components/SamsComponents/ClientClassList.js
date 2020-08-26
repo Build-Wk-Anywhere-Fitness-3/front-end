@@ -1,38 +1,11 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
-
+import { ClassContext } from "../../App";
 import { ClassListStyle } from "../../styled-components/";
-
-const ClassContext = createContext();
-
-const dummyData = [
-  {
-    name: "Boxing Fundamentals",
-    type: "Boxing",
-    instructor_name: "Sam",
-    date: "8/24",
-    duration: "1 hour",
-    intensity: "Challenging",
-    location: "Remote",
-    signedUp: "57",
-    max_size: "N/A",
-  },
-  {
-    name: "Cycling Intervals",
-    type: "Cycling",
-    instructor_name: "Sam",
-    date: "8/24",
-    duration: "1 hour",
-    intensity: "Challenging",
-    location: "Spin City",
-    signedUp: "57",
-    max_size: "100",
-  },
-];
+import SearchForm from "./SearchForm";
 
 export default function ClassList() {
-  const [clientClassList, setClientClassList] = useState(dummyData);
-
+  const { clientClassList, setClientClassList } = useContext(ClassContext);
   const getClassList = () => {
     axiosWithAuth()
       .get("/api/auth/users/classes")
@@ -49,7 +22,12 @@ export default function ClassList() {
     getClassList();
   }, []);
   return (
-    <ClassContext.Provider value={clientClassList}>
+    <div>
+      <SearchForm
+        clientClassList={clientClassList}
+        setClientClassList={setClientClassList}
+        getClassList={getClassList}
+      />
       <ClassListStyle className="classList">
         {clientClassList.map((cls) => {
           return (
@@ -66,6 +44,6 @@ export default function ClassList() {
           );
         })}
       </ClassListStyle>
-    </ClassContext.Provider>
+    </div>
   );
 }

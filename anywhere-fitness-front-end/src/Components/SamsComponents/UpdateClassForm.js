@@ -1,36 +1,43 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import { ClassContext } from "../../App";
 
-export default function UpdateClassForm(props) {
-  const { id } = useParams();
+export default function UpdateClassForm() {
+  const params = useParams();
   const history = useHistory();
+  const { inputs, setInputs } = useContext(ClassContext);
+  console.log(params.id);
 
-  //   useEffect(() => {
-  //       axiosWithAuth().get(`/${id}`)
-  //   }, [id])
+  useEffect(() => {
+    axiosWithAuth()
+      .get(`/api/auth/users/classes/location`, { location: "Remote" })
+      .then((res) => {
+        console.log(res);
+      });
+  }, [params.id]);
 
   const updateClass = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .put(`/api/auth/instructor/classes/${id}`, props.inputs)
+      .put(`/api/auth/instructor/classes/${params.id}`, inputs)
       .then((res) => {
         console.log(res);
       });
   };
   const handleChange = (e) => {
-    props.setInputs({ ...props.inputs, [e.target.name]: e.target.value });
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
   return (
     <div>
-      Edit a class:
+      Update a class:
       <form onSubmit={updateClass}>
         <label>
           Name of Class:
           <input
             type="text"
             name="name"
-            value={props.inputs.name}
+            value={inputs.name}
             onChange={handleChange}
           />
         </label>
@@ -40,17 +47,17 @@ export default function UpdateClassForm(props) {
           <input
             type="text"
             name="type"
-            value={props.inputs.type}
+            value={inputs.type}
             onChange={handleChange}
           />
         </label>
         <br />
         <label>
-          Start time:
+          Date:
           <input
             type="text"
-            name="startTime"
-            value={props.inputs.startTime}
+            name="date"
+            value={inputs.date}
             onChange={handleChange}
           />
         </label>
@@ -60,18 +67,17 @@ export default function UpdateClassForm(props) {
           <input
             type="text"
             name="duration"
-            value={props.inputs.duration}
+            value={inputs.duration}
             onChange={handleChange}
           />
         </label>
         <br />
         <label>
           Intensity:
-          <select name="intensity" value={props.inputs.intensity}>
-            <option value="Beginner">Beginner</option>
-            <option value="Moderate">Moderate</option>
-            <option value="Challenging">Challenging</option>
-            <option value="Extreme">Extreme</option>
+          <select name="intensity" onChange={handleChange}>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
           </select>
         </label>
         <br />
@@ -80,7 +86,7 @@ export default function UpdateClassForm(props) {
           <input
             type="text"
             name="location"
-            value={props.inputs.location}
+            value={inputs.location}
             onChange={handleChange}
           />
         </label>
@@ -89,8 +95,8 @@ export default function UpdateClassForm(props) {
           Current number of registered attendees:
           <input
             type="text"
-            name="current"
-            value={props.inputs.current}
+            name="signedUp"
+            value={inputs.signedUp}
             onChange={handleChange}
           />
         </label>
@@ -99,14 +105,14 @@ export default function UpdateClassForm(props) {
           Maximum class size:
           <input
             type="text"
-            name="maximum"
-            value={props.inputs.maximum}
+            name="max_size"
+            value={inputs.max_size}
             onChange={handleChange}
           />
         </label>
         <br />
 
-        <button>Add Class</button>
+        <button>Update Class</button>
       </form>
     </div>
   );

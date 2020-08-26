@@ -1,21 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
+import { ClassContext } from "../../App";
+import { initialValues } from "../../App";
 
-export default function AddClassForm(props) {
+export default function AddClassForm() {
   const history = useHistory();
+  const { inputs, setInputs } = useContext(ClassContext);
+  console.log("My name is", inputs.instructor_name);
 
   const handleChange = (e) => {
-    props.setInputs({ ...props.inputs, [e.target.name]: e.target.value });
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
 
   const postNewClass = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .post("/api/auth/instructor/classes", props.inputs)
+      .post("/api/auth/instructor/classes", inputs)
       .then((res) => {
         console.log(res);
-        history.push("/");
+        history.push("/instructor");
+        setInputs(initialValues);
       })
       .catch((err) => {
         console.log(err);
@@ -31,7 +36,7 @@ export default function AddClassForm(props) {
           <input
             type="text"
             name="name"
-            value={props.inputs.name}
+            value={inputs.name}
             onChange={handleChange}
           />
         </label>
@@ -41,17 +46,17 @@ export default function AddClassForm(props) {
           <input
             type="text"
             name="type"
-            value={props.inputs.type}
+            value={inputs.type}
             onChange={handleChange}
           />
         </label>
         <br />
         <label>
-          Start time:
+          Date:
           <input
             type="text"
-            name="startTime"
-            value={props.inputs.startTime}
+            name="date"
+            value={inputs.date}
             onChange={handleChange}
           />
         </label>
@@ -61,18 +66,17 @@ export default function AddClassForm(props) {
           <input
             type="text"
             name="duration"
-            value={props.inputs.duration}
+            value={inputs.duration}
             onChange={handleChange}
           />
         </label>
         <br />
         <label>
           Intensity:
-          <select name="intensity" value={props.inputs.intensity}>
-            <option value="Beginner">Beginner</option>
-            <option value="Moderate">Moderate</option>
-            <option value="Challenging">Challenging</option>
-            <option value="Extreme">Extreme</option>
+          <select name="intensity" onChange={handleChange}>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
           </select>
         </label>
         <br />
@@ -81,7 +85,7 @@ export default function AddClassForm(props) {
           <input
             type="text"
             name="location"
-            value={props.inputs.location}
+            value={inputs.location}
             onChange={handleChange}
           />
         </label>
@@ -90,8 +94,8 @@ export default function AddClassForm(props) {
           Current number of registered attendees:
           <input
             type="text"
-            name="current"
-            value={props.inputs.current}
+            name="signedUp"
+            value={inputs.signedUp}
             onChange={handleChange}
           />
         </label>
@@ -100,8 +104,8 @@ export default function AddClassForm(props) {
           Maximum class size:
           <input
             type="text"
-            name="maximum"
-            value={props.inputs.maximum}
+            name="max_size"
+            value={inputs.max_size}
             onChange={handleChange}
           />
         </label>

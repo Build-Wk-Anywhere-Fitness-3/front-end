@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { useHistory, Route, Link } from "react-router-dom";
 import { ClassListStyle } from "../../styled-components/";
@@ -6,7 +6,7 @@ import { ClassListStyle } from "../../styled-components/";
 import AddClassForm from "./AddClassForm";
 import UpdateClassForm from "./UpdateClassForm";
 import ClassCard from "./ClassCard";
-import Classs from "./Classs";
+import { ClassContext } from "../../App";
 
 const dummyData = [
   {
@@ -35,34 +35,38 @@ const dummyData = [
   },
 ];
 
-const initialValues = {
-  name: "",
-  instructor_name: "",
-  type: "",
-  date: "",
-  duration: "",
-  intensity: "",
-  location: "",
-  signedUp: "",
-  max_size: "",
-};
-
 export default function InstructorClassList() {
-  const [instructorClasses, setInstructorClasses] = useState(dummyData);
-  const [inputs, setInputs] = useState(initialValues);
+  const [instructorClasses, setInstructorClasses] = useState([]);
+  const { inputs } = useContext(ClassContext);
 
   const history = useHistory();
 
-  const getInstructorClasses = () => {
+  //   const getInstructorClasses = () => {
+  //     axiosWithAuth()
+  //       .get("/api/auth/users/classes/instructor")
+  //       .then((res) => {
+  //         console.log(res);
+  //       });
+  //   };
+  const getClassList = () => {
     axiosWithAuth()
-      .get("/api/auth/instructor/classes/")
+      .get("/api/auth/users/classes")
       .then((res) => {
+        const x = res.data.data.filter(
+          (cls) => cls.instructor_name === inputs.instructor_name
+        );
         console.log(res);
+        console.log(inputs.instructor_name);
+        console.log(x);
+        setInstructorClasses(x);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
   useEffect(() => {
-    getInstructorClasses();
-  }, []);
+    getClassList();
+  }, [instructorClasses.length]);
 
   return (
     <>
@@ -70,10 +74,12 @@ export default function InstructorClassList() {
       <ClassListStyle>
         {instructorClasses.map((cls) => {
           return (
-            <div>
-              <Link key={cls.id} to={`api/auth/instructor/classes/${cls.id}`}>
-                <ClassCard cls={cls} />
-              </Link>
+            <div key={cls.id}>
+              <ClassCard
+                setInstructorClasses={setInstructorClasses}
+                instructorClasses={instructorClasses}
+                cls={cls}
+              />
             </div>
           );
         })}
@@ -81,18 +87,6 @@ export default function InstructorClassList() {
       <button onClick={() => history.push("/add-class")}>
         Make a new class
       </button>
-      <Route path="/add-class">
-        <AddClassForm inputs={inputs} setInputs={setInputs} />
-      </Route>
-      <Route path="/update-class/:id">
-        <UpdateClassForm inputs={inputs} setInputs={setInputs} />
-      </Route>
-      <Route path="/api/auth/instructor/classes/:id">
-        <Classs
-          instructorClasses={instructorClasses}
-          setInstructorClasses={setInstructorClasses}
-        />
-      </Route>
     </>
   );
 }
