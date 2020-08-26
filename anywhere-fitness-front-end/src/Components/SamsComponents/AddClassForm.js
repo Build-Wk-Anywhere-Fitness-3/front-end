@@ -2,11 +2,12 @@ import React, { useContext } from "react";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 import { ClassContext } from "../../App";
+import { initialValues } from "../../App";
 
 export default function AddClassForm() {
   const history = useHistory();
   const { inputs, setInputs } = useContext(ClassContext);
-  console.log(inputs);
+  console.log("My name is", inputs.instructor_name);
 
   const handleChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -19,6 +20,7 @@ export default function AddClassForm() {
       .then((res) => {
         console.log(res);
         history.push("/instructor");
+        setInputs(initialValues);
       })
       .catch((err) => {
         console.log(err);
@@ -45,15 +47,6 @@ export default function AddClassForm() {
             type="text"
             name="type"
             value={inputs.type}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Instructor:{" "}
-          <input
-            type="text"
-            name="instructor"
-            value={inputs.instructor}
             onChange={handleChange}
           />
         </label>

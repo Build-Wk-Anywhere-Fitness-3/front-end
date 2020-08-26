@@ -4,23 +4,23 @@ import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { ClassContext } from "../../App";
 
 export default function UpdateClassForm() {
-  const { id } = useParams();
+  const params = useParams();
   const history = useHistory();
   const { inputs, setInputs } = useContext(ClassContext);
-  console.log(id);
+  console.log(params.id);
 
   useEffect(() => {
     axiosWithAuth()
-      .get(`/api/auth/users/classes/${id}`)
+      .get(`/api/auth/users/classes/location`, { location: "Remote" })
       .then((res) => {
         console.log(res);
       });
-  }, [id]);
+  }, [params.id]);
 
   const updateClass = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .put(`/api/auth/instructor/classes/${id}`, inputs)
+      .put(`/api/auth/instructor/classes/${params.id}`, inputs)
       .then((res) => {
         console.log(res);
       });

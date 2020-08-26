@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { useHistory, Route, Link } from "react-router-dom";
 import { ClassListStyle } from "../../styled-components/";
@@ -6,7 +6,7 @@ import { ClassListStyle } from "../../styled-components/";
 import AddClassForm from "./AddClassForm";
 import UpdateClassForm from "./UpdateClassForm";
 import ClassCard from "./ClassCard";
-import Classs from "./Classs";
+import { ClassContext } from "../../App";
 
 const dummyData = [
   {
@@ -37,6 +37,7 @@ const dummyData = [
 
 export default function InstructorClassList() {
   const [instructorClasses, setInstructorClasses] = useState([]);
+  const { inputs } = useContext(ClassContext);
 
   const history = useHistory();
 
@@ -51,8 +52,13 @@ export default function InstructorClassList() {
     axiosWithAuth()
       .get("/api/auth/users/classes")
       .then((res) => {
+        const x = res.data.data.filter(
+          (cls) => cls.instructor_name === inputs.instructor_name
+        );
         console.log(res);
-        setInstructorClasses(res.data.data);
+        console.log(inputs.instructor_name);
+        console.log(x);
+        setInstructorClasses(x);
       })
       .catch((err) => {
         console.log(err);
@@ -60,7 +66,7 @@ export default function InstructorClassList() {
   };
   useEffect(() => {
     getClassList();
-  }, []);
+  }, [instructorClasses.length]);
 
   return (
     <>
@@ -69,7 +75,11 @@ export default function InstructorClassList() {
         {instructorClasses.map((cls) => {
           return (
             <div key={cls.id}>
-              <ClassCard cls={cls} />
+              <ClassCard
+                setInstructorClasses={setInstructorClasses}
+                instructorClasses={instructorClasses}
+                cls={cls}
+              />
             </div>
           );
         })}

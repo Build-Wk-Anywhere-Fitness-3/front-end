@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { ClassContext } from "../../App";
 import { ClassListStyle } from "../../styled-components/";
+import SearchForm from "./SearchForm";
 
 export default function ClassList() {
   const { clientClassList, setClientClassList } = useContext(ClassContext);
@@ -22,6 +23,11 @@ export default function ClassList() {
   }, []);
   return (
     <div>
+      <SearchForm
+        clientClassList={clientClassList}
+        setClientClassList={setClientClassList}
+        getClassList={getClassList}
+      />
       <ClassListStyle className="classList">
         {clientClassList.map((cls) => {
           return (

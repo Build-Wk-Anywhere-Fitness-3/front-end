@@ -10,7 +10,7 @@ export const ClassListStyle = styled.div`
     border: 1px solid black;
     box-sizing: border-box;
     padding: 1%;
-    margin-bottom: 1%;
+    margin-top: 1%;
   }
   h1 {
     font-size: 2rem;

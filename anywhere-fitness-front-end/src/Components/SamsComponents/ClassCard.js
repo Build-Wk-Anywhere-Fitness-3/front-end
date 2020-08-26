@@ -2,7 +2,11 @@ import React from "react";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 
-export default function ClassCard({ cls }) {
+export default function ClassCard({
+  cls,
+  setInstructorClasses,
+  instructorClasses,
+}) {
   const history = useHistory();
 
   const deleteClass = (e) => {
@@ -12,6 +16,8 @@ export default function ClassCard({ cls }) {
       .delete(`/api/auth/instructor/classes/${cls.id}`)
       .then((res) => {
         console.log("Deleted", res);
+        const list = instructorClasses.filter((el) => el.id !== cls.id);
+        setInstructorClasses(list);
       });
   };
   return (

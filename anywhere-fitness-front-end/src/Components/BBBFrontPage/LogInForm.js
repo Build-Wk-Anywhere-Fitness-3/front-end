@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import * as yup from "yup";
 import { Button } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { ClassContext } from "../../App";
 
 const LoginForm = () => {
   const base = {
@@ -22,8 +23,7 @@ const LoginForm = () => {
     username: "",
     password: "",
   });
-  const [username, setUsername] = useState("");
-
+  const { inputs, setInputs } = useContext(ClassContext);
   const [visState, setVisState] = useState("hidden");
 
   //INPUT CHANGE
@@ -38,6 +38,8 @@ const LoginForm = () => {
     validateChange(e);
     setForm(newFormData);
   };
+
+  const history = useHistory();
 
   //VALIDATE
   const validateChange = (e) => {
@@ -67,7 +69,8 @@ const LoginForm = () => {
   //SUBMIT
   const formSubmit = (e) => {
     e.preventDefault();
-    setUsername(formState.username);
+    localStorage.setItem("username", formState.username);
+    setInputs({ ...inputs, instructor_name: localStorage.getItem("username") });
     axios
       .post("https://anytime-fitness.herokuapp.com/api/auth/login", formState)
       .then((res) => {
@@ -76,6 +79,7 @@ const LoginForm = () => {
         data.push(post);
         setForm(base);
         localStorage.setItem("token", res.data.token);
+        history.push(`/${res.data.role}`);
       })
       .catch((err) => {
         console.log(err);

@@ -5,9 +5,6 @@ import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import { TweenMax, Power3 } from "gsap";
 
-
-
-
 const SignUpForm = () => {
   //GSAP ANIMATION
   let formItem = useRef(null);
@@ -16,27 +13,19 @@ const SignUpForm = () => {
   useEffect(() => {
     console.log(formItem);
     // formItem.style.display = 'none'
-    TweenMax.to(
-      formItem, 
-      .8,
-      { 
-        opcacity: 1,
-        y: -20,
-        ease: Power3.easeOut,
-        delay: .2
-      }
-    )
-    TweenMax.to(
-      buttonItem, 
-      6,
-      { 
-        opcacity: 1,
-        y: -80,
-        ease: Power3.easeOut,
-        delay: 1
-      }
-    )
-  }, [])
+    TweenMax.to(formItem, 0.8, {
+      opcacity: 1,
+      y: -20,
+      ease: Power3.easeOut,
+      delay: 0.2,
+    });
+    TweenMax.to(buttonItem, 6, {
+      opcacity: 1,
+      y: -80,
+      ease: Power3.easeOut,
+      delay: 1,
+    });
+  }, []);
 
   console.log(formItem);
 
@@ -45,7 +34,7 @@ const SignUpForm = () => {
     email: "",
     username: "",
     password: "",
-    role: "",
+    role: "client",
   };
 
   // STATE:
@@ -186,8 +175,13 @@ const SignUpForm = () => {
 
   return (
     <div>
-      <form onSubmit={formSubmit} ref={el => {formItem = el}} className="form">
-
+      <form
+        onSubmit={formSubmit}
+        ref={(el) => {
+          formItem = el;
+        }}
+        className="form"
+      >
         <h2 className="sign-up">Sign-Up Today!</h2>
 
         <label htmlFor="name" className="label">
@@ -261,12 +255,12 @@ const SignUpForm = () => {
             onClick={() => {
               setVisState("visible");
             }}
-            ref={el => {buttonItem = el}}
+            ref={(el) => {
+              buttonItem = el;
+            }}
           >
             Submit
           </Button>
-            
-
         </div>
         <Link to="/login">
           <p>Login</p>

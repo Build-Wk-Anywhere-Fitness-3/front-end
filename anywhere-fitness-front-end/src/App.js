@@ -40,13 +40,13 @@ import UpdateClassForm from "./Components/SamsComponents/UpdateClassForm";
 //     max_size: "100",
 //   },
 // ];
-const initialValues = {
+export const initialValues = {
   name: "",
-  instructor_name: "",
+  instructor_name: localStorage.getItem("username"),
   type: "",
   date: "",
   duration: "",
-  intensity: "",
+  intensity: "low",
   location: "",
   signedUp: "",
   max_size: "",
@@ -60,28 +60,28 @@ function App() {
   return (
     <div>
       <Router>
-        <Header />
-        <div className="App">
-          <Route exact path="/">
-            <Logo />
-            <SignUpForm />
-          </Route>
-          <Route exact path="/login" component={LoginForm} />
+        <ClassContext.Provider
+          value={{ clientClassList, setClientClassList, inputs, setInputs }}
+        >
+          <Header />
+          <div className="App">
+            <Route exact path="/">
+              <Logo />
+              <SignUpForm />
+            </Route>
+            <Route exact path="/login" component={LoginForm} />
 
-          <Logo />
-          <ClassContext.Provider
-            value={{ clientClassList, setClientClassList, inputs, setInputs }}
-          >
+            <Logo />
             <PrivateRoute path="/instructor" component={InstructorClassList} />
             <Route path="/add-class" component={AddClassForm} />
             <Route path="/update-class/:id" component={UpdateClassForm} />
 
-            <PrivateRoute path="/users" component={ClientClassList} />
-          </ClassContext.Provider>
+            <PrivateRoute path="/client" component={ClientClassList} />
 
+            <Footer />
+          </div>
           <Footer />
-        </div>
-        <Footer />
+        </ClassContext.Provider>
       </Router>
     </div>
   );
