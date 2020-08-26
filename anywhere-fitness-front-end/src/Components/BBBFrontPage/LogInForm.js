@@ -55,9 +55,7 @@ const LoginForm = () => {
 
   //SCHEMA
   const signUpSchema = yup.object().shape({
-    username: yup
-      .string()
-      .required("Must include a valid username."),
+    username: yup.string().required("Must include a valid username."),
     password: yup
       .string()
       .min(6, "Must be a minimum of 6 characters.")
@@ -71,9 +69,11 @@ const LoginForm = () => {
     axios
       .post("https://anytime-fitness.herokuapp.com/api/auth/login", formState)
       .then((res) => {
+        console.log(res);
         setPost(res.data);
         data.push(post);
         setForm(base);
+        localStorage.setItem("token", res.data.token);
       })
       .catch((err) => {
         console.log(err);
@@ -89,7 +89,6 @@ const LoginForm = () => {
       setButtonDisabled(true);
     }
   }, [formState]);
-
 
   return (
     <div>

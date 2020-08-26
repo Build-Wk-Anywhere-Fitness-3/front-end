@@ -1,46 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
-import { useHistory, Route } from "react-router-dom";
+import { useHistory, Route, Link } from "react-router-dom";
 import { ClassListStyle } from "../../styled-components/";
 
 import AddClassForm from "./AddClassForm";
 import UpdateClassForm from "./UpdateClassForm";
+import ClassCard from "./ClassCard";
+import Classs from "./Classs";
 
 const dummyData = [
   {
+    id: 1,
     name: "Boxing Fundamentals",
     type: "Boxing",
-    instructor: "Sam",
-    startTime: "10:30am",
+    instructor_name: "Sam",
+    date: "8/24",
     duration: "1 hour",
     intensity: "Challenging",
     location: "Remote",
-    current: "57",
-    maximum: "N/A",
+    signedUp: "57",
+    max_size: "N/A",
   },
   {
+    id: 2,
     name: "Cycling Intervals",
     type: "Cycling",
-    instructor: "Sam",
-    startTime: "2:30pm",
+    instructor_name: "Sam",
+    date: "8/24",
     duration: "1 hour",
     intensity: "Challenging",
     location: "Spin City",
-    current: "57",
-    maximum: "100",
+    signedUp: "57",
+    max_size: "100",
   },
 ];
 
 const initialValues = {
   name: "",
-  instructor: "",
+  instructor_name: "",
   type: "",
-  startTime: "",
+  date: "",
   duration: "",
   intensity: "",
   location: "",
-  current: "",
-  maximum: "",
+  signedUp: "",
+  max_size: "",
 };
 
 export default function InstructorClassList() {
@@ -49,6 +53,17 @@ export default function InstructorClassList() {
 
   const history = useHistory();
 
+  const getInstructorClasses = () => {
+    axiosWithAuth()
+      .get("/api/auth/instructor/classes/")
+      .then((res) => {
+        console.log(res);
+      });
+  };
+  useEffect(() => {
+    getInstructorClasses();
+  }, []);
+
   return (
     <>
       Your current classes:
@@ -56,16 +71,9 @@ export default function InstructorClassList() {
         {instructorClasses.map((cls) => {
           return (
             <div>
-              <h1>Name: {cls.name}</h1>
-              <h3>Type of class: {cls.type}</h3>
-              <h3>Instructor: {cls.instructor}</h3>
-              <p>Start Time: {cls.startTime}</p>
-              <p>Intensity: {cls.intensity}</p>
-              <p>Location: {cls.location}</p>
-              <p>Current number of registered attendees: {cls.current}</p>
-              <p>Maximum class size: {cls.maximum}</p>
-              <button>Edit Class</button>
-              <button>Delete Class</button>
+              <Link key={cls.id} to={`api/auth/instructor/classes/${cls.id}`}>
+                <ClassCard cls={cls} />
+              </Link>
             </div>
           );
         })}
@@ -78,6 +86,12 @@ export default function InstructorClassList() {
       </Route>
       <Route path="/update-class/:id">
         <UpdateClassForm inputs={inputs} setInputs={setInputs} />
+      </Route>
+      <Route path="/api/auth/instructor/classes/:id">
+        <Classs
+          instructorClasses={instructorClasses}
+          setInstructorClasses={setInstructorClasses}
+        />
       </Route>
     </>
   );
