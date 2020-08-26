@@ -84,7 +84,7 @@ const SignUpForm = () => {
       .min(6, "Must be a minimum of 6 characters.")
       .max(10, "Must be a maximum of 10 characters.")
       .required("Must include a password."),
-    // role: ...none?...
+    role: yup.string(),
   });
 
   //SUBMIT
@@ -92,7 +92,10 @@ const SignUpForm = () => {
     e.preventDefault();
     axios
       // .post("https://reqres.in/api/users", formState)
-      .post("https://anytime-fitness.herokuapp.com/api/auth/register", formState)
+      .post(
+        "https://anytime-fitness.herokuapp.com/api/auth/register",
+        formState
+      )
       .then((res) => {
         setPost(res.data);
         console.log(res);
@@ -103,6 +106,7 @@ const SignUpForm = () => {
         console.log(err);
       });
   };
+  console.log(formState);
 
   // Disable button if invalid inputs
   // useEffect(() => {
@@ -205,12 +209,11 @@ const SignUpForm = () => {
         <div className="termsContainer">
           <label htmlFor="role" className="label" id="typeLabel">
             Role:&#160;
-            <select name="role" data-cy="role">
-              <option value="Trainee">Trainee</option>
-              <option value="Instructor">Instructor</option>
+            <select name="role" data-cy="role" onChange={inputChange}>
+              <option value="client">Trainee</option>
+              <option value="instructor">Instructor</option>
             </select>
           </label>
-
         </div>
 
         <div className="button">

@@ -35,33 +35,31 @@ const dummyData = [
   },
 ];
 
-const initialValues = {
-  name: "",
-  instructor_name: "",
-  type: "",
-  date: "",
-  duration: "",
-  intensity: "",
-  location: "",
-  signedUp: "",
-  max_size: "",
-};
-
 export default function InstructorClassList() {
-  const [instructorClasses, setInstructorClasses] = useState(dummyData);
-  const [inputs, setInputs] = useState(initialValues);
+  const [instructorClasses, setInstructorClasses] = useState([]);
 
   const history = useHistory();
 
-  const getInstructorClasses = () => {
+  //   const getInstructorClasses = () => {
+  //     axiosWithAuth()
+  //       .get("/api/auth/users/classes/instructor")
+  //       .then((res) => {
+  //         console.log(res);
+  //       });
+  //   };
+  const getClassList = () => {
     axiosWithAuth()
-      .get("/api/auth/instructor/classes/")
+      .get("/api/auth/users/classes")
       .then((res) => {
         console.log(res);
+        setInstructorClasses(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
   useEffect(() => {
-    getInstructorClasses();
+    getClassList();
   }, []);
 
   return (
@@ -70,10 +68,8 @@ export default function InstructorClassList() {
       <ClassListStyle>
         {instructorClasses.map((cls) => {
           return (
-            <div>
-              <Link key={cls.id} to={`api/auth/instructor/classes/${cls.id}`}>
-                <ClassCard cls={cls} />
-              </Link>
+            <div key={cls.id}>
+              <ClassCard cls={cls} />
             </div>
           );
         })}
@@ -81,18 +77,6 @@ export default function InstructorClassList() {
       <button onClick={() => history.push("/add-class")}>
         Make a new class
       </button>
-      <Route path="/add-class">
-        <AddClassForm inputs={inputs} setInputs={setInputs} />
-      </Route>
-      <Route path="/update-class/:id">
-        <UpdateClassForm inputs={inputs} setInputs={setInputs} />
-      </Route>
-      <Route path="/api/auth/instructor/classes/:id">
-        <Classs
-          instructorClasses={instructorClasses}
-          setInstructorClasses={setInstructorClasses}
-        />
-      </Route>
     </>
   );
 }

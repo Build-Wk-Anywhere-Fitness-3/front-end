@@ -22,6 +22,7 @@ const LoginForm = () => {
     username: "",
     password: "",
   });
+  const [username, setUsername] = useState("");
 
   const [visState, setVisState] = useState("hidden");
 
@@ -58,7 +59,7 @@ const LoginForm = () => {
     username: yup.string().required("Must include a valid username."),
     password: yup
       .string()
-      .min(6, "Must be a minimum of 6 characters.")
+      .min(3, "Must be a minimum of 3 characters.")
       .max(10, "Must be a maximum of 10 characters.")
       .required("Must include a password."),
   });
@@ -66,6 +67,7 @@ const LoginForm = () => {
   //SUBMIT
   const formSubmit = (e) => {
     e.preventDefault();
+    setUsername(formState.username);
     axios
       .post("https://anytime-fitness.herokuapp.com/api/auth/login", formState)
       .then((res) => {
@@ -83,7 +85,7 @@ const LoginForm = () => {
   //Disable button if invalid inputs
 
   useEffect(() => {
-    if (formState.username.length > 3 && formState.password.length > 3) {
+    if (formState.username.length >= 3 && formState.password.length > 3) {
       setButtonDisabled(false);
     } else {
       setButtonDisabled(true);
