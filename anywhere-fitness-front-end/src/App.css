@@ -44,6 +44,11 @@ form {
 
 }
 
+/* Residual animation class that didn't work but that I don't want to delete till i'm sure */
+/* .form {
+  opacity: .5;
+} */
+
 .label {
   padding: .5rem;
   font-size: calc(3px + 2vmin);

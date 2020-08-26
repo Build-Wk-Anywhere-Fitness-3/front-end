@@ -1,10 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import * as yup from "yup";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
+import { TweenMax, Power3 } from "gsap";
+
+
+
 
 const SignUpForm = () => {
+  //GSAP ANIMATION
+  let formItem = useRef(null);
+  let buttonItem = useRef(null);
+
+  useEffect(() => {
+    console.log(formItem);
+    // formItem.style.display = 'none'
+    TweenMax.to(
+      formItem, 
+      .8,
+      { 
+        opcacity: 1,
+        y: -20,
+        ease: Power3.easeOut,
+        delay: .2
+      }
+    )
+    TweenMax.to(
+      buttonItem, 
+      6,
+      { 
+        opcacity: 1,
+        y: -80,
+        ease: Power3.easeOut,
+        delay: 1
+      }
+    )
+  }, [])
+
+  console.log(formItem);
+
   const base = {
     name: "",
     email: "",
@@ -147,7 +182,8 @@ const SignUpForm = () => {
 
   return (
     <div>
-      <form onSubmit={formSubmit}>
+      <form onSubmit={formSubmit} ref={el => {formItem = el}} className="form">
+
         <h2 className="sign-up">Sign-Up Today!</h2>
 
         <label htmlFor="name" className="label">
@@ -222,9 +258,12 @@ const SignUpForm = () => {
             onClick={() => {
               setVisState("visible");
             }}
+            ref={el => {buttonItem = el}}
           >
             Submit
           </Button>
+            
+
         </div>
         <Link to="/login">
           <p>Login</p>
