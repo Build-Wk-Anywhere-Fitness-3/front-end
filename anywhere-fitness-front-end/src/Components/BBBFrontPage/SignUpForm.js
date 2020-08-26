@@ -3,6 +3,8 @@ import axios from "axios";
 import * as yup from "yup";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
+import { gsap } from "gsap";
+
 
 const SignUpForm = () => {
   const base = {
@@ -147,7 +149,7 @@ const SignUpForm = () => {
 
   return (
     <div>
-      <form onSubmit={formSubmit}>
+      <form onSubmit={formSubmit} className="form">
         <h2 className="sign-up">Sign-Up Today!</h2>
 
         <label htmlFor="name" className="label">
@@ -225,6 +227,8 @@ const SignUpForm = () => {
           >
             Submit
           </Button>
+            
+
         </div>
         <Link to="/login">
           <p>Login</p>
