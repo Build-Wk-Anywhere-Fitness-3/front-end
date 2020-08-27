@@ -42,22 +42,27 @@
   border: 2px solid #e6b31e;
 }
 
-.logo {
+/* .logo {
+  height: 20%;
+  width: 60%;
+  padding-top: 20px;
+} */
+
+#mainLogo {
+  /* background-color: red;  */
   height: 20%;
   width: 60%;
   padding-top: 20px;
 }
 
-/* .mainLogo {
-  /* margin: 100%; */
-  /* background-color: red; 
-} */
 
-
-.navLogo {
-  background-color: white;
+#navlogo {
+  /* background-color: blue; */
+  height: auto;
+  width: 25%;
+  /* background-color: white;
   border-radius: 5px;
-  max-width: 100px;
+  max-width: 100px; */
 }
 
 form {
@@ -69,6 +74,7 @@ form {
   padding: 1rem;
   border-radius: 10px;
   border: 4px #ba9503 solid;
+  border: 4px #ffffff solid;
   width: 100%;
   /* max-height: 40%vw; */
 }

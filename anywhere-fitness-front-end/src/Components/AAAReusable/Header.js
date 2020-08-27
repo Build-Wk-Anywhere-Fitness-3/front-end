@@ -12,7 +12,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import Logo from './../BBBFrontPage/Logo'
+import NavLogo from './../BBBFrontPage/NavLogo'
 
 function Header(props) {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +27,7 @@ function Header(props) {
           activeStyle={{color: '#fcfaf1', textDecoration: 'none'}}>
           {/* | &ensp;A N Y W H E R E &ensp; F I T N E S S{" "} */}
         <div className="navLogo">
-          <Logo />
+          <NavLogo />
         </div>
           
         </NavbarBrand>
@@ -36,8 +36,8 @@ function Header(props) {
           <Nav className="mr-auto" navbar>
             <h2>
               <NavLink 
-              style={{color: '#cacaca', textDecoration: 'none'}}
-              activeStyle={{color: '#fcfaf1', textDecoration: 'none'}}
+              style={{color: '#ffffff', textDecoration: 'none'}}
+              activeStyle={{color: '#ba9503', textDecoration: 'none'}}
               href="localhost:3000/" className="navLink">
                 Home
               </NavLink>
@@ -46,7 +46,7 @@ function Header(props) {
             <h2>
               <NavLink
                 style={{color: '#cacaca', textDecoration: 'none'}}
-                activeStyle={{color: '#fcfaf1', textDecoration: 'none'}}
+                activeStyle={{color: '#ba9503', textDecoration: 'none'}}
                 href="https://github.com/Build-Wk-Anywhere-Fitness-3"
                 className="navLink"
               >
@@ -57,7 +57,7 @@ function Header(props) {
             <h2>
               <NavLink 
               style={{color: '#cacaca', textDecoration: 'none'}}
-              activeStyle={{color: '#fcfaf1', textDecoration: 'none'}}
+              activeStyle={{color: '#ba9503', textDecoration: 'none'}}
               href="" className="navLink">
                 Courses
               </NavLink>
@@ -65,7 +65,7 @@ function Header(props) {
             <h2>
               <NavLink
                 style={{color: '#cacaca', textDecoration: 'none'}}
-                activeStyle={{color: '#fcfaf1', textDecoration: 'none'}}
+                activeStyle={{color: '#ba9503', textDecoration: 'none'}}
                 href="https://build-wk-anywhere-fitness-3.github.io/ui/index.html"
                 className="navLink"
               >
@@ -75,7 +75,7 @@ function Header(props) {
             <h2>
               <NavLink
                 style={{color: '#cacaca', textDecoration: 'none'}}
-                activeStyle={{color: '#fcfaf1', textDecoration: 'none'}}
+                activeStyle={{color: '#ba9503', textDecoration: 'none'}}
                 href="https://build-wk-anywhere-fitness-3.github.io/ui/about.html"
                 className="navLink"
               >
@@ -85,9 +85,9 @@ function Header(props) {
 
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret
-              style={{color: '#cacaca', textDecoration: 'none'}}
-              activeStyle={{color: '#fcfaf1', textDecoration: 'none'}} >
-                Login-SignUp
+              style={{color: '#ba9503', textDecoration: 'none'}}
+              activeStyle={{color: '#ba9503', textDecoration: 'none'}} >
+                Login/SignUp
               </DropdownToggle>
               <DropdownMenu right>
                 <Link to="/login">
