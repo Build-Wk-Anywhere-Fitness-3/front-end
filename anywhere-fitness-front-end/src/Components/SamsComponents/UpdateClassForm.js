@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { ClassContext } from "../../App";
@@ -6,20 +6,15 @@ import { ClassContext } from "../../App";
 export default function UpdateClassForm() {
   const params = useParams();
   const history = useHistory();
-  const { inputs, setInputs, clientClassList, setClientClassList } = useContext(
-    ClassContext
-  );
+  const { inputs, setInputs } = useContext(ClassContext);
   //   const [ formValues, setFormValues] = useState([])
 
-  console.log(params.id);
-  console.log(clientClassList);
   useEffect(() => {
     axiosWithAuth()
       .get(`/api/auth/users/classes/`)
       .then((res) => {
         let newArr = res.data.data.filter((cls) => cls.id == params.id);
         setInputs(newArr[0]);
-        // setClientClassList(res.data.data);
       });
   }, []);
 
