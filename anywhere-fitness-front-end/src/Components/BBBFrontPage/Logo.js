@@ -19,10 +19,10 @@ export default function Logo() {
     )
   }, [])
   return (
-    <div id="mainLogo">
+    <div >
       <img
       ref={el => {logoItem = el}}
-      src={logo} className="logo" alt="Brand Logo for Anywhere Fitness" />
+      src={logo} className="logo" id="mainLogo" alt="Brand Logo for Anywhere Fitness" />
     </div>
   );
 }

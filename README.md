@@ -1,12 +1,81 @@
-# front-end
+------------------------------***#### ANYWHERE FITNESS ###***--------------------------------
 
-React I &amp; II
 
 ## GitHup Link: https://github.com/Build-Wk-Anywhere-Fitness-3/front-end.git
 
-## PVD - Canvas: https://docs.google.com/document/d/1S75RVA0gtwIg3GzKEuS1WKFXwXxHJtJkHAoRq0eiUz8/edit
+## PVD - Canvas: https://docs.google.com/document/d1S75RVA0gtwIg3GzKEuS1WKFXwXxHJtJkHAoRq0eiUz8/edit
 
-## IMPORTANT DOCUMENTS:pushpin:
+--------------------------------------------------------------------------------------------
+
+### ui:
+Unit-1
+
+## Motivation
+The motivation for this project was to create an app that would connect fitness instructors with clients without having to join a gym. The UI of this project focused on developing a general theme and building landing and about marketing pages.
+
+## Tech/framework used:
+**Built with**
+- HTML
+- CSS
+
+## Credit:
+A huge shout out to the entire team at Lambda School. The expereince so far has been amazing and I can't wait to see what I learn next. Also, thank you to Sam, Andre, and Natalie for being awesome partners during this build week. Your feedback and encouragement has made this week totally worth it.
+
+--------------------------------------------------------------------------------------------
+
+### Front End:
+Unit-2
+
+## Motivation:
+The purpose of "Anywhere Fitness" is to make fitness possible anywhere! We wanted to connect clients with personal trainers and personal trainers with clients.
+
+The app will be able to allow instructors can take attendance, request and process payments, create virtual “punch passes” for each type of class offered, alert clients of cancellations or location changes and so much more. Clients can easily find out information on classes - location, class size, start time and duration, as well as reschedule or cancel an upcoming appointment or reservation right from the mobile app. We hope to make our services more dynamic and evolved as we grow!
+
+
+## Tech/Framework Used:
+Base:
+  - create-react-app
+  - axios
+  - yup
+
+Styling:
+  - styled components
+  - reactstrap bootstrap
+  - GSAP
+
+## Credit:
+Thank you to Lambda school for helping put this project into action. Our Team Leader Natalie was a huge help to launch the project and help get it running to what it is now. Brandon and Sam made huge efforts to make a super clean project and do everything they can and more to make it happen. 
+
+
+--------------------------------------------------------------------------------------------
+### Front End:
+Unit-3
+
+## Motivation:
+ We wanted to figure out a way to connect trainers and trainees in an easy and convenient way. These days, fitness classes can be held anywhere- a park, an unfinished basement or a garage- not just at a traditional gym. Certified fitness instructors need an easy way to take the awkwardness out of attendance taking and client payment processing.
+
+## Tech/Framework Used:
+  - React
+  - Reactstrap
+  - Context API
+  - GSAP
+
+## Credit:
+Lambda School inspired (required) me to make this project. A big thanks to Andre Michalowski and Brandon O'Neal for helping build all the various aspects of the project and being willing to contribute whenever needed. Also, a big thank you to Natalie Davis for being an awesome Project Lead and helping us all stay focused and motivated!
+
+## How to use Features:
+Create an account as either an instructor or client. Login with your credentials.
+Clients can easily view all available classes and search for classes.
+Instructors can easily view all of their own classes and can create new classes, update existing classes, or delete unwanted classes.
+
+## Installation:
+Run npm install to install all needed dependencies.
+Run npm start to boot up the project on the localhost.
+Contribute: Make a payment processing system, let clients save classes to their profile.
+
+
+
+## IMPORTANT DOCUMENTS:
 
 :github: GitHub Org:
 trello Trello Board:
@@ -31,108 +100,3 @@ bw_help_ux
 bw_help_ds
 bw_help_ios
 
-### FE1
-
-## Dependencies:
-
-- [x] Download dependencies
-
-  - create-react-app
-
-    - axios
-    - yup
-    - styled components
-    - reactstrap bootstrap
-
-    - cypress (install later once you build more)
-
-## RUBRIK:
-
-1. ///OVERVIEW/WIREFRAME///:
-
-- [x] Plan to discuss plans for UI with rest of team
-- [x] For now use this as rough example to create forms and endpoints: https://www.youtube.com/watch?v=MK3A5SyEYYI
-
-2.  ///RUBRIK/REQUIREMENTS///:
-
-    --SKILLS ASSESSMENT--:
-
-        + |APPLIED JS|:
-          GRADE 1:
-          - [x] Event Handlers
-          GRADE 2:
-          - [x] Functional Components w/dynamic functionality
-          GRADE 3:
-
-    - [x] Third party event/animation (ex. Greensock, Anime, React-motion)
-          https://greensock.com/get-started/
-
-          + |INTRO TO REACT|:
-            GRADE 1:
-            - [x] Reusable components
-            - [x] useEffect + useState hooks
-            GRADE 2:
-            - [x] Component level organization
-            - [x] Proper usage of state and props throughout project
-            - [x] UI contains small re-usable components
-            - [x] hooks
-            - [x] Array methods to dynamically render HTML
-            GRADE 3:
-            - [x] Components able to be easily re-used
-            - [x] Advanced React techniques like: composition patter, custom hooks, render props, HOCs, tc.
-
-            + |SINGLE PAGE APPLICATION|:
-            GRADE 1 + 2:
-            - [x] React router used and route management properly installed and used to show top level pages as well as nested views where necessary
-            - [x] network calls and router used
-            - [x] Get requests made (using axios or fetch) to display 3rd party data on deployed page
-            GRADE 3:
-            - [x] proper use of container vs. presentational components or other industry standards/conventions/patterns used
-
-            + |FORM MANAGEMENT|
-            GRADE 1:
-            GRADE 2:
-            - [x] Component management makes sense for each form and controlled/uncontrolled components can be defended
-            - [x] Third party library used and able to be defended.
-            - [x] Form validation in place
-            GRADE 3:
-            - [x] State management:
-              - [x] is insightful and clean
-              - [x] in place for all fields and all use cases.
-              - [x] Loaded states and success/error notifications are in place and add to UX
-
-          --TEAMWORK ASSESSMENT--
-
-            + |MVP WORK|
-            GRADE 1 - 3:
-
-    - [x] All MVP features were built and student went above and beyond
-
-      - [x] MVP
-      - [x] Greensock animation
-            https://youtu.be/eY4sXczY5AQ?t=938
-      - [] Readme requirement
-
-        - https://medium.com/@meakaakka/a-beginners-guide-to-writing-a-kickass-readme-7ac01da88ab3
-
-        - https://www.markdownguide.org/cheat-sheet/
-
-      - [x] Revisions/Additions:
-        - Cleaning styling
-          - Adding brandon's color pallet
-          - [x] Linking Brandon's pages
-          - [x] check website
-          - [x] Moving Login and SignUp text under button.
-          - [x] background
-          - [x] form styles
-            - [x] input width
-          - [x] margin on logo
-        - [x] Adding styling w/styled components
-        - [x] Adding link for marketing page
-        - [x] Rewiring routing
-        - [x] Check on Sam for React 2 and if he needs help
-
-
-
-    * |TEAM WORK SCORE|
-      GRADE 1 - 3: - [x] Pair programmed with Web UI and Back end Architect
