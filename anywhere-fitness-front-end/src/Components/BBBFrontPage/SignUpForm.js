@@ -261,15 +261,19 @@ const SignUpForm = () => {
           >
             Submit
           </Button>
+          
         </div>
-        <Link to="/login">
-          <p>Login</p>
-        </Link>
+          <Link to="/login" className="button">
+            <div className="rerouteContainer">
+              <p className="rerouteText">Login</p>
+            </div>
+          </Link>
+        
       </form>
-      <h2 className={visState}>
-        {" "}
-        Congratulations! You signed up! {JSON.stringify(post, null, 2)}
-      </h2>
+        <h2 className={visState}>
+          {" "}
+          Congratulations! You signed up! {JSON.stringify(post, null, 2)}
+        </h2>
     </div>
   );
 };
