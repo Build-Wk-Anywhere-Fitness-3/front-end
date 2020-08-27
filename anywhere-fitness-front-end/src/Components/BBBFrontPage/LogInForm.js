@@ -141,8 +141,10 @@ const LoginForm = () => {
           </Button>
         </div>
 
-        <Link to="/">
-          <p>SignUp</p>
+        <Link to="/" className="button">
+          <div className="rerouteContainer">
+            <p className="rerouteText">SignUp</p>
+          </div>
         </Link>
       </form>
       <h2 className={visState}>

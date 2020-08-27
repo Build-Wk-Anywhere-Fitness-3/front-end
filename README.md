@@ -36,6 +36,7 @@ bw_help_ios
 ## Dependencies:
 
 - [x] Download dependencies
+
   - create-react-app
 
     - axios
@@ -63,64 +64,75 @@ bw_help_ios
           - [x] Functional Components w/dynamic functionality
           GRADE 3:
 
-    O - [] Third party event/animation (ex. Greensock, Anime, React-motion)
-    https://greensock.com/get-started/
+    - [x] Third party event/animation (ex. Greensock, Anime, React-motion)
+          https://greensock.com/get-started/
 
-        + |INTRO TO REACT|:
-          GRADE 1:
-          - [x] Reusable components
-          - [x] useEffect + useState hooks
-          GRADE 2:
-          - [x] Component level organization
-          - [x] Proper usage of state and props throughout project
-          - [x] UI contains small re-usable components
-          - [x] hooks
-          - [x] Array methods to dynamically render HTML
-          GRADE 3:
-          - [x] Components able to be easily re-used
-          - [x] Advanced React techniques like: composition patter, custom hooks, render props, HOCs, tc.
+          + |INTRO TO REACT|:
+            GRADE 1:
+            - [x] Reusable components
+            - [x] useEffect + useState hooks
+            GRADE 2:
+            - [x] Component level organization
+            - [x] Proper usage of state and props throughout project
+            - [x] UI contains small re-usable components
+            - [x] hooks
+            - [x] Array methods to dynamically render HTML
+            GRADE 3:
+            - [x] Components able to be easily re-used
+            - [x] Advanced React techniques like: composition patter, custom hooks, render props, HOCs, tc.
 
-          + |SINGLE PAGE APPLICATION|:
-          GRADE 1 + 2:
-          - [x] React router used and route management properly installed and used to show top level pages as well as nested views where necessary
-          - [x] network calls and router used
-          - [x] Get requests made (using axios or fetch) to display 3rd party data on deployed page
-          GRADE 3:
-          - [x] proper use of container vs. presentational components or other industry standards/conventions/patterns used
+            + |SINGLE PAGE APPLICATION|:
+            GRADE 1 + 2:
+            - [x] React router used and route management properly installed and used to show top level pages as well as nested views where necessary
+            - [x] network calls and router used
+            - [x] Get requests made (using axios or fetch) to display 3rd party data on deployed page
+            GRADE 3:
+            - [x] proper use of container vs. presentational components or other industry standards/conventions/patterns used
 
-          + |FORM MANAGEMENT|
-          GRADE 1:
-          GRADE 2:
-          - [x] Component management makes sense for each form and controlled/uncontrolled components can be defended
-          - [x] Third party library used and able to be defended.
-          - [x] Form validation in place
-          GRADE 3:
-          - [x] State management:
-            - [x] is insightful and clean
-            - [x] in place for all fields and all use cases.
-            - [x] Loaded states and success/error notifications are in place and add to UX
+            + |FORM MANAGEMENT|
+            GRADE 1:
+            GRADE 2:
+            - [x] Component management makes sense for each form and controlled/uncontrolled components can be defended
+            - [x] Third party library used and able to be defended.
+            - [x] Form validation in place
+            GRADE 3:
+            - [x] State management:
+              - [x] is insightful and clean
+              - [x] in place for all fields and all use cases.
+              - [x] Loaded states and success/error notifications are in place and add to UX
 
-        --TEAMWORK ASSESSMENT--
+          --TEAMWORK ASSESSMENT--
 
-          + |MVP WORK|
-          GRADE 1 - 3:
+            + |MVP WORK|
+            GRADE 1 - 3:
 
-    O - [] All MVP features were built and student went above and beyond
-      - MVP
-      - Greensock animation
-          https://youtu.be/eY4sXczY5AQ?t=938
-      - Revisions/Additions:
+    - [x] All MVP features were built and student went above and beyond
+
+      - [x] MVP
+      - [x] Greensock animation
+            https://youtu.be/eY4sXczY5AQ?t=938
+      - [] Readme requirement
+
+        - https://medium.com/@meakaakka/a-beginners-guide-to-writing-a-kickass-readme-7ac01da88ab3
+
+        - https://www.markdownguide.org/cheat-sheet/
+
+      - [x] Revisions/Additions:
         - Cleaning styling
           - Adding brandon's color pallet
-          - Moving Login and SignUp text under button. 
-        - Adding styling w/styled components
-        - Adding link for marketing page
-        - Rewiring routing
-        - Check on Sam for React 2 and if he needs help 
-      - Above and Beyond:
-        - []
-        - []
+          - [x] Linking Brandon's pages
+          - [x] check website
+          - [x] Moving Login and SignUp text under button.
+          - [x] background
+          - [x] form styles
+            - [x] input width
+          - [x] margin on logo
+        - [x] Adding styling w/styled components
+        - [x] Adding link for marketing page
+        - [x] Rewiring routing
+        - [x] Check on Sam for React 2 and if he needs help
 
-      
-     + |TEAM WORK SCORE|
-    GRADE 1 - 3: - [x] Pair programmed with Web UI and Back end Architect
+
+
+    * |TEAM WORK SCORE|
+      GRADE 1 - 3: - [x] Pair programmed with Web UI and Back end Architect
