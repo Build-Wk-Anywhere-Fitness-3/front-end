@@ -20,6 +20,7 @@ export default function ClassList() {
 
   useEffect(() => {
     getClassList();
+    console.log(clientClassList);
   }, []);
   return (
     <div>
