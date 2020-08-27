@@ -65,20 +65,17 @@ function App() {
         >
           <Header />
           <div className="App">
+            <Logo />
             <Route exact path="/">
-              <Logo />
               <SignUpForm />
             </Route>
             <Route exact path="/login" component={LoginForm} />
 
-            <Logo />
             <PrivateRoute path="/instructor" component={InstructorClassList} />
             <Route path="/add-class" component={AddClassForm} />
             <Route path="/update-class/:id" component={UpdateClassForm} />
 
             <PrivateRoute path="/client" component={ClientClassList} />
-
-            <Footer />
           </div>
           <Footer />
         </ClassContext.Provider>

@@ -69,24 +69,24 @@ export default function InstructorClassList() {
   }, [instructorClasses.length]);
 
   return (
-    <>
+    <div>
       Your current classes:
-      <ClassListStyle>
+      <div>
         {instructorClasses.map((cls) => {
           return (
-            <div key={cls.id}>
+            <ClassListStyle key={cls.id}>
               <ClassCard
                 setInstructorClasses={setInstructorClasses}
                 instructorClasses={instructorClasses}
                 cls={cls}
               />
-            </div>
+            </ClassListStyle>
           );
         })}
-      </ClassListStyle>
+      </div>
       <button onClick={() => history.push("/add-class")}>
         Make a new class
       </button>
-    </>
+    </div>
   );
 }

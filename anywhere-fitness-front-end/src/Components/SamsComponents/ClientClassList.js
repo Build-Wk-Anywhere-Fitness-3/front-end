@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { ClassContext } from "../../App";
 import { ClassListStyle } from "../../styled-components/";
@@ -29,10 +29,11 @@ export default function ClassList() {
         getClassList={getClassList}
       />
       <ClassListStyle className="classList">
+        <h1>Available classes:</h1>
         {clientClassList.map((cls) => {
           return (
             <div>
-              <h1>Name: {cls.name}</h1>
+              <h2>Name: {cls.name}</h2>
               <h3>Type of class: {cls.type}</h3>
               <h3>Instructor: {cls.instructor_name}</h3>
               <p>Date: {cls.date}</p>

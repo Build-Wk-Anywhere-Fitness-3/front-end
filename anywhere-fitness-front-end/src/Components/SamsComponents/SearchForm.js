@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
-
+import { FormStyle } from "../../styled-components/";
 const initialValues = {
   category: "",
   input: "",
 };
-export default function SearchForm({
-  clientClassList,
-  setClientClassList,
-  getClassList,
-}) {
+export default function SearchForm({ setClientClassList, getClassList }) {
   const [search, setSearch] = useState(initialValues);
 
   const handleChange = (e) => {
@@ -35,9 +31,10 @@ export default function SearchForm({
   };
   return (
     <div>
-      <form onSubmit={onSubmit}>
+      <FormStyle onSubmit={onSubmit}>
+        Search for classes:
         <select name="category" onChange={handleChange}>
-          <option value=""></option>
+          <option value="">Select a Category</option>
 
           <option value="type">Type</option>
           <option value="date">Date</option>
@@ -52,7 +49,7 @@ export default function SearchForm({
           onChange={handleChange}
         />
         <button>Search</button>
-      </form>
+      </FormStyle>
     </div>
   );
 }

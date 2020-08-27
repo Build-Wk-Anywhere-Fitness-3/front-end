@@ -7,15 +7,16 @@ export default function UpdateClassForm() {
   const params = useParams();
   const history = useHistory();
   const { inputs, setInputs } = useContext(ClassContext);
-  console.log(params.id);
+  //   const [ formValues, setFormValues] = useState([])
 
   useEffect(() => {
     axiosWithAuth()
-      .get(`/api/auth/users/classes/location`, { location: "Remote" })
+      .get(`/api/auth/users/classes/`)
       .then((res) => {
-        console.log(res);
+        let newArr = res.data.data.filter((cls) => cls.id == params.id);
+        setInputs(newArr[0]);
       });
-  }, [params.id]);
+  }, []);
 
   const updateClass = (e) => {
     e.preventDefault();
@@ -23,6 +24,7 @@ export default function UpdateClassForm() {
       .put(`/api/auth/instructor/classes/${params.id}`, inputs)
       .then((res) => {
         console.log(res);
+        history.push("/instructor");
       });
   };
   const handleChange = (e) => {
