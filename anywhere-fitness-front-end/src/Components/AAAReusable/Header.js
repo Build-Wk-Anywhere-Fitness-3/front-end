@@ -20,6 +20,7 @@ function Header(props) {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
+
     <div className="header">
       <Navbar color="dark" light expand="md" className="Navbar">
         <NavbarBrand href="/"
@@ -30,6 +31,7 @@ function Header(props) {
           <NavLogo />
         </div>
           
+
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
