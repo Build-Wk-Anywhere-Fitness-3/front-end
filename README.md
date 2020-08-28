@@ -36,6 +36,7 @@ bw_help_ios
 ## Dependencies:
 
 - [x] Download dependencies
+
   - create-react-app
 
     - axios
@@ -106,21 +107,56 @@ bw_help_ios
           GRADE 1 - 3:
 
     O - [] All MVP features were built and student went above and beyond
-      - MVP
-      - Greensock animation
-          https://youtu.be/eY4sXczY5AQ?t=938
-      - Revisions/Additions:
-        - Cleaning styling
-          - Adding brandon's color pallet
-          - Moving Login and SignUp text under button. 
-        - Adding styling w/styled components
-        - Adding link for marketing page
-        - Rewiring routing
-        - Check on Sam for React 2 and if he needs help 
-      - Above and Beyond:
-        - []
-        - []
 
-      
-     + |TEAM WORK SCORE|
-    GRADE 1 - 3: - [x] Pair programmed with Web UI and Back end Architect
+    - MVP
+    - Greensock animation
+      https://youtu.be/eY4sXczY5AQ?t=938
+    - Revisions/Additions:
+      - Cleaning styling
+        - Adding brandon's color pallet
+        - Moving Login and SignUp text under button.
+      - Adding styling w/styled components
+      - Adding link for marketing page
+      - Rewiring routing
+      - Check on Sam for React 2 and if he needs help
+    - Above and Beyond:
+      - []
+      - []
+
+    * |TEAM WORK SCORE|
+      GRADE 1 - 3: - [x] Pair programmed with Web UI and Back end Architect
+
+    ////////////////Sam////////////////
+
+    Project Title:
+
+    Anywhere Fitness
+
+    Motivation:
+
+    We wanted to figure out a way to connect trainers and trainees in an easy and convenient way. These days, fitness classes can be held anywhere- a park, an unfinished basement or a garage- not just at a traditional gym. Certified fitness instructors need an easy way to take the awkwardness out of attendance taking and client payment processing.
+
+    Tech/Frameworks used:
+
+    React, Reactstrap, Context API, GSAP
+
+    How to use/Features:
+
+    Create an account as either an instructor or client. Login with your credentials.
+
+    Clients can easily view all available classes and search for classes.
+
+    Instructors can easily view all of their own classes and can create new classes, update existing classes, or delete unwanted classes.
+
+    Installation:
+
+    Run npm install to install all needed dependencies.
+    Run npm start to boot up the project on the localhost.
+
+    Contribute: Make a payment processing system, let clients save classes to their profile.
+
+    Credits:
+
+    Lambda School inspired (required) me to make this project. A big thanks to Andre Michalowski and Brandon O'Neal for helping build all the various aspects of the project and being willing to contribute whenever needed. Also, a big thank you to Natalie Davis for being an awesome Project Lead and helping us all stay focused and motivated!
+
+    ////////////////End////////////////

@@ -2,13 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import * as yup from "yup";
 import { Button } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { TweenMax, Power3 } from "gsap";
 
 const SignUpForm = () => {
   //GSAP ANIMATION
   let formItem = useRef(null);
   let buttonItem = useRef(null);
+  const history = useHistory();
 
   useEffect(() => {
     console.log(formItem);
@@ -125,6 +126,7 @@ const SignUpForm = () => {
         console.log(res);
         data.push(post);
         setForm(base);
+        history.push("/login");
       })
       .catch((err) => {
         console.log(err);
@@ -174,7 +176,7 @@ const SignUpForm = () => {
   }, [formState]);
 
   return (
-    <div>
+    <div className="signUp">
       <form
         onSubmit={formSubmit}
         ref={(el) => {
@@ -183,7 +185,6 @@ const SignUpForm = () => {
         className="form"
       >
         <h2 className="sign-up">Sign-Up Today!</h2>
-
         <label htmlFor="name" className="label">
           Name:&#160;
           <input
@@ -196,7 +197,6 @@ const SignUpForm = () => {
           />
           {errors.name.length > 0 ? <p>{errors.name}</p> : null}
         </label>
-
         <label htmlFor="email" className="label">
           Email:&#160;
           <input
@@ -209,7 +209,6 @@ const SignUpForm = () => {
           />
           {errors.email.length > 0 ? <p>{errors.email}</p> : null}
         </label>
-
         <label htmlFor="username" className="label">
           Username:&#160;
           <input
@@ -222,7 +221,6 @@ const SignUpForm = () => {
           />
           {errors.username.length > 0 ? <p>{errors.username}</p> : null}
         </label>
-
         <label htmlFor="password" className="label">
           Password:&#160;
           <input
@@ -235,7 +233,6 @@ const SignUpForm = () => {
           />
           {errors.password.length > 0 ? <p>{errors.password}</p> : null}
         </label>
-
         <div className="termsContainer">
           <label htmlFor="role" className="label" id="typeLabel">
             Role:&#160;
@@ -245,7 +242,6 @@ const SignUpForm = () => {
             </select>
           </label>
         </div>
-
         <div className="button">
           <Button
             disabled={buttonDisabled}
@@ -265,11 +261,12 @@ const SignUpForm = () => {
         <Link to="/login">
           <p>Login</p>
         </Link>
+
+        <h3 className={visState}>
+          {" "}
+          Congratulations! You signed up! {JSON.stringify(post, null, 2)}
+        </h3>
       </form>
-      <h2 className={visState}>
-        {" "}
-        Congratulations! You signed up! {JSON.stringify(post, null, 2)}
-      </h2>
     </div>
   );
 };

@@ -19,7 +19,7 @@ function Header(props) {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div className="header">
+    <div id="header">
       <Navbar color="light" light expand="md" className="Navbar">
         <NavbarBrand href="/">
           | &ensp;A N Y W H E R E &ensp; F I T N E S S{" "}

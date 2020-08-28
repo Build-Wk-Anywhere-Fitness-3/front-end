@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Cabin&family=Roboto+Condensed&display=swap");
 .App {
   text-align: center;
-  background-color: #ded5d5;
+
   min-height: 90vh;
   display: flex;
   flex-direction: column;
@@ -184,4 +184,7 @@ input[type=radio] {
   padding: 1rem;
   border-radius: 10px;
   border: 2px rgb(235, 234, 190) solid;
+}
+.App .signUp {
+  max-width: 37%;
 }
